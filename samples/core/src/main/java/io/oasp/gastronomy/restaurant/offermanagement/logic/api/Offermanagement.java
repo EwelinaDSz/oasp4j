@@ -1,5 +1,10 @@
 package io.oasp.gastronomy.restaurant.offermanagement.logic.api;
 
+import java.sql.Blob;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import io.oasp.gastronomy.restaurant.general.logic.api.to.BinaryObjectEto;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.DrinkEto;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.MealEto;
@@ -13,12 +18,8 @@ import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.ProductFilter;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.ProductSearchCriteriaTo;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.ProductSortBy;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.SideDishEto;
+import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.SpecialEto;
 import io.oasp.module.jpa.common.api.to.PaginatedListTo;
-
-import java.sql.Blob;
-import java.util.List;
-
-import javax.validation.Valid;
 
 /**
  * Interface for OfferManagement.
@@ -35,6 +36,8 @@ public interface Offermanagement {
    */
   OfferEto findOffer(Long id);
 
+  SpecialEto findSpecial(Long id);
+
   /**
    * Gets an {@link OfferCto} using its entity identifier.
    *
@@ -48,6 +51,8 @@ public interface Offermanagement {
    * @return the {@link List} with all available {@link OfferEto}s.
    */
   List<OfferEto> findAllOffers();
+
+  List<SpecialEto> findAllSpecials();
 
   /**
    * Returns a list of offers matching the search criteria.
@@ -81,6 +86,8 @@ public interface Offermanagement {
    */
   void deleteOffer(Long offerId);
 
+  void deleteSpecial(Long specialId);
+
   /**
    * If no ID is contained creates the {@link OfferEto} for the first time. Else it updates the {@link OfferEto} with
    * given ID. If no {@link OfferEto} with given ID is present, an exception will be thrown.
@@ -89,6 +96,8 @@ public interface Offermanagement {
    * @return the generated/updated offer
    */
   OfferEto saveOffer(@Valid OfferEto offer);
+
+  SpecialEto saveSpecial(@Valid SpecialEto special);
 
   /**
    * Gets a {@link io.oasp.gastronomy.restaurant.offermanagement.common.api.Product} using its entity identifier.
