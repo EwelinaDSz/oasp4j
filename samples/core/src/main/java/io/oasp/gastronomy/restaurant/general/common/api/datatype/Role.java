@@ -36,7 +36,12 @@ public enum Role implements Principal {
    * {@link io.oasp.gastronomy.restaurant.staffmanagement.common.api.StaffMember}s.
    */
   // END ARCHETYPE SKIP
-  CHIEF("Chief");
+  CHIEF("Chief"),
+
+  /**
+   * {@link io.oasp.gastronomy.restaurant.staffmanagement.common.api.StaffMember}s.
+   */
+  MANAGER("Manager");
 
   private final String name;
 
